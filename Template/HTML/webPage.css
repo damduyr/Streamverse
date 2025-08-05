@@ -1,0 +1,36 @@
+
+.grid-container {
+display: grid;
+grid-template-columns: 1fr 3fr;
+}
+
+.grid-container > div {
+margin: 10px;
+line-height: 75px;
+}
+
+.right-side{
+display:grid;
+grid-template-columns: auto auto auto;
+gap: 10% 10%;
+
+}
+
+.right-side > div{
+border:1px solid black;
+background-color: #f1f1f1;
+width:80%;
+}
+
+.head{
+float:right; 
+display:inline;
+}
+
+footer{
+padding-top:1px;
+height:7%;
+text-align: center;
+color:white;
+background-color: black;
+}

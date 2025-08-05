@@ -1,0 +1,81 @@
+<html>
+<head>
+<title>Calculator</title>
+
+<link rel="stylesheet" href="calci.css">
+
+<style>
+.ans{
+width: 100%;
+}
+</style>
+
+<script>
+
+function getData(x){
+	document.getElementById("display").value+=x;
+}
+
+function calculate(){
+	var temp = document.getElementById("display").value;
+	document.getElementById("display").value = eval(temp);
+}
+
+function clr(){ 
+	document.getElementById("display").value="";
+}
+
+function sqroot(){
+	var temp = document.getElementById("display").value;
+	document.getElementById("display").value = Math.sqrt(temp);
+}
+
+</script>
+
+</head>
+
+<body>
+<center>
+<h2> Calculator</h2>
+<div class="mainBody">
+<table>
+	<tr><input type="text" id="display" placeholder="0"><tr>
+	<tr>
+		<td><input type="button" class="num" value="7" onclick="getData('7')"></td>
+		<td><input type="button" class="num" value="8" onclick="getData('8')"></td>
+		<td><input type="button" class="num" value="9" onclick="getData('9')"></td>
+		<td><input type="button" class="calculation" value="+" onclick="getData('+')"></td>	
+	</tr>
+	<tr>
+		<td><input type="button" class="num" value="4" onclick="getData('4')"></td>
+		<td><input type="button" class="num" value="5" onclick="getData('5')"></td>
+		<td><input type="button" class="num" value="6" onclick="getData('6')"></td>
+		<td><input type="button" class="calculation" value="-" onclick="getData('-')"></td>	
+	</tr>
+	<tr>
+		<td><input type="button" class="num" value="1" onclick="getData('1')"></td>
+		<td><input type="button" class="num" value="2" onclick="getData('2')"></td>
+		<td><input type="button" class="num" value="3" onclick="getData('3')"></td>
+		<td><input type="button" class="calculation" value="x" onclick="getData('*')"></td>	
+	</tr>
+	<tr>
+		<td><input type="button" class="num" value="(" onclick="getData('(')"></td>
+		<td><input type="button" class="num" value="0" onclick="getData('0')"></td>
+		<td><input type="button" class="num" value=")" onclick="getData(')')"></td>
+		<td><input type="button" class="calculation" value="/" onclick="getData('/')"></td>	
+	</tr>
+	<tr>
+		<td><input type="button" class="clear" value="C" onclick="clr()"></td>
+		<td><input type="button" class="num" value="." onclick="getData('.')"></td>	
+		<td><input type="button" class="calculation" value="sqrt" onclick="sqroot()"></td>
+		<td><input type="button" class="calculation" value="^" onclick="getData('**')"></td>
+	</tr>
+	<tr>
+		<td colspan="4"><input type="button" class="ans" value="=" onclick="calculate()"></td>
+	</tr>
+</table>
+</div>
+</center>
+</body>
+
+</html>

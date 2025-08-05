@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>Flex and Grid</title>
+
+<style>
+<!--
+.flex-container {
+display: flex;
+flex-direction: row;
+background-color: red;
+}
+
+.flex-container > div {
+background-color: #f1f1f1;
+width: 100px;
+margin: 10px;
+text-align: center;
+line-height: 75px;
+font-size: 30px;
+}	
+-->
+
+.grid-container {
+display: grid;
+height: 630px;
+grid-template-columns: auto auto auto auto;
+column-gap:10px;
+background-color: red;
+place-content: center;
+}
+
+.grid-container > div {
+background-color: #f1f1f1;
+margin:10px;
+padding:20px;		
+font-size: 30px;
+height: auto;
+text-align:center;
+}
+
+.item6 {
+grid-area: 2/2/4/4;		
+}
+
+</style>
+</head>
+
+<body>
+<!-- justify content along X-axis move krta hai, align content along Y-axis move krta hai aur place content in dono ka mix -->
+<!--
+<div class="flex-container">
+  <div>1</div>
+  <div style="align-self:flex-end">2</div>
+  <div>3</div>  
+  <div>4</div>
+</div>
+-->
+
+<div class="grid-container">
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<div>4</div>
+<div>5</div>
+<div class='item6'>6</div>
+<div>7</div>
+<div>8</div>
+<div>9</div>
+<div>10</div>
+<div>11</div>
+<div>12</div>
+<div>13</div>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function(){
+	$(".btn1").click(function(){
+		//$(this).hide();
+		//$(".btn2").show();
+		$(".para1").fadeIn(5000);
+		
+	});
+	$(".btn2").click(function(){
+		//$(this).hide();
+		//$(".btn1").show();
+		$(".para1").fadeOut("fast");
+	});
+	$(".btn3").click(function(){
+		//alert('Clicked button 3');
+		//$(".btn1").show();
+		//$(".btn2").show();
+		$(".para1").fadeToggle("slow");
+	});
+	$(".btn4").click(function(){
+		$(".para1").fadeTo(3000,0.4);
+	});
+});
+</script>
+
+<script>
+$(document).ready(function(){
+	$(".slide1").click(function(){
+		$(".img1").slideUp(3000).slideDown(3000); //method chaining
+		
+	});
+	$(".slide2").click(function(){
+		$(".img1").slideDown("fast");
+	});
+	$(".slide3").click(function(){
+		$(".img1").slideToggle("slow");
+	});
+});
+</script>
+
+<script>
+$(document).ready(function(){
+	$(".big").click(function(){
+		$(".img1").animate({
+			left:'50%',
+			height:'200px',
+			width:'400px',
+			opacity:'0.6',
+			align:'center'
+		});
+	});
+});
+</script>
+</head>
+<body>
+
+<p class="para1">The optional speed parameter specifies the duration of the effect. It can take the following values: "slow", "fast", or milliseconds.</p>
+<p class="para2"></p>
+<button class="btn1"> FadeIn</button><br>
+<button class="btn2"> FadeOut</button><br>
+<button class="btn3"> FadeToggle</button><br>
+<button class="btn4"> FadeTo</button><br>
+
+<img src="https://thewowstyle.com/wp-content/uploads/2015/01/nature-images..jpg"  class='img1' style="height:100px;width:200px;">
+
+<br>
+<button class="slide1"> slideUp</button><br>
+<button class="slide2"> slideDown</button><br>
+<button class="slide3"> slideToggle</button><br><br>
+
+<button class="big"> MakeItBig</button><br>
+
+</body>
+
+</html>
+
+
+

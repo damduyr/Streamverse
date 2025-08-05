@@ -1,0 +1,72 @@
+Action                 Expected result
+Login button ->	If users data exists in the database, user must be able to login to homepage
+
+Private & Balco -> Private selects private db and balco selects balco employees db.
+
+P.No -> To search for Existing user will click on search icon to get the details
+
+Search By-> patient should be able to filter their id based on 6 parameters	
+	based on the filter selected user will search their and database should show their id
+
+details present in db should be automatically fetched aur shown in the form
+
+New -> on click, show registration form
+P.No.,First name, DOB,Gender,Age,Patient class,Address,Mobile, Area are mandatory field.
+
+Institution -> On click, Dropwdown list of all registered institutiion
+
+Age -> Should not be greater than 124, changes based on dob
+DOB-> changes or adjusted accordingly based on age
+
+Blood Group -> Dropdown list
+aadhar card -> validation that number should be 12 digits and each 4 digits separated by -
+
+Pan card => Should be alphanumber of 10 characters mandatorily
+Ration card => number field
+
+Patient class => dropdown list
+Reg date & time => automatically fetched
+Valid Upto Date => Calendar field
+V R Date => Calendar Field
+
+
+
+==========================================================================================================================
+BUGS in PMI
+==========================================================================================================================
+Phone -> No validation added, User can enter more than 10 numbers
+Email -> No validation added, can enter random characters
+
+Reporting Mgr Details => Show value as Reporting Manager Details in placeholder value
+Employee Family Members -> New-> phone field is not validated, User can enter more than 10 number
+Disabled this Family member => ?
+
+==========================================================================================================================
+Suggestions
+==========================================================================================================================
+In navbar when we click on UTILITIES, A list appears in a div, scrolling down scrolls the whole page down, instead that list div should be scrollable
+If we click on any button in navbar it remains highlighted even we move mouse pointer to other button
+
+==========================================================================================================================
+BUGS IN Ward
+==========================================================================================================================
+Blood Requisition => horizontal scrollbar -> Column name and entries are not aligned when moving horizontally
+
+BT Notes => Date fields are not mandatory but once clicked we cannot clear that individual date field. user has to abort then edit again
+
+Parameter Trend Analysis => Print Report -> Logo is squeezed too much	
+
+Referral Details -> Local Radio button not working
+
+Ward-> Clinical Data ->Local Exam ->Adult in Patient History and Examination ->Part III -> Obstertrics & Gynacology History ( For Female)->Past Surgical History ->Year -> No validation, can enter letters also
+Ward-> Clinical Data ->Local Exam ->Adult in Patient History and Examination ->Part III -> Obstertrics & Gynacology History ( For Female)->Current Medication -> Dose -> No validation
+
+Ward-> Clinical Data ->Local Exam ->Adult in Patient History and Examination ->Part III ->Personal History-> Lifestyle -> all three can be selected, only 1 should be allowed
+
+Ward-> Clinical Data ->Local Exam ->Pediatric -> General Examination -> No validation for any fields like height weight Temp, pulse, etc 
+
+Ward-> Clinical Data ->Local Exam ->Dermatology ->Diagnosis ->Acne -> Grade 1 2 3 can be selected simultaneously
+
+Ward-> Clinical Data ->Local Exam -> Respiratory -> Present Complaints -> Alignment mismatch everywhere
+
+==========================================================================================================================

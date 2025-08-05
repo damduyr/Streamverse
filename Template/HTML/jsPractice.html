@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>Practice</title>
+
+<script>
+
+function changePara(){
+	document.getElementById("para").innerText = "Nothing";
+}
+function changeColor(){
+	document.getElementById("heading").style.color= "red";
+}
+
+</script>
+
+</head>
+
+<body>
+
+<p id="para"> A lone surrogate is a Unicode surrogate code point that is not part of a valid surrogate pair used to represent characters in UTF-16 encoding.</p>
+
+<input type='button' onclick="changePara()" value="Click Here To change para">
+
+<h1 id="heading">This is a heading<h2>
+<input type="button" value="click to change color" onclick="changeColor()">
+<br><br>
+<input type="button" value="click to create alert" onclick="alert('Alert made!')">
+
+</body>
+</html>
+
+
+<!--
+<html>
+<body>
+
+<h2>JavaScript Do While Loop</h2>
+
+<p id="demo"></p>
+
+<script>
+//count occurences of all characters
+let text = "Rainy season is Awful!";
+let cnt = new Map();
+
+for(let i=0; i<text.length; i++){
+	//console.log(text[i]);
+	cnt.set(text[i],(cnt.get(text[i]) || 0) + 1);
+}
+
+console.log(cnt);
+
+</script>
+
+</body>
+</html>
+-->
+
+<!--
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Do While Loop</h2>
+
+<p id="demo"></p>
+
+<script>
+//find longest word from string
+const text = "A JavaScript string is zero or more characters written inside quotes";
+
+var longest = "";
+var temp = "";
+for(let i=0; i<text.length; i++){
+	if(text[i] == " "){
+    	if(longest.length < temp.length){
+        	longest = temp;
+        }
+         temp="";
+    }
+    temp+=text[i];
+}
+
+
+document.getElementById("demo").innerHTML = longest;
+</script>
+
+</body>
+</html>
+-->

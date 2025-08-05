@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+
+.saffron,.white,.green{
+border: 1px solid black;
+height: 100px;
+width:500px;
+}
+.blue{
+border: 1px solid black;
+height: 100px;
+width: 100px;
+border-radius: 50px;
+}
+
+
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function(){
+  $(".btn").click(function(){
+  	$(".main-box").children(".saffron").css({"background-color": "#FF9933"});
+    $(".main-box").children(".white").css({"background-color": "#FFFFFF"});
+    $(".main-box").children(".green").css({"background-color": "#138808"});
+    $(".main-box").find(".blue").css({"background-color": "#000080"});
+  });
+});
+</script>
+</head>
+<body>
+
+<div class="main-box">
+	<div class="saffron"></div>
+    <div class="white">
+    	<center><div class="blue"></div></center>
+    </div>
+    <div class="green"></div>
+    <br>
+	<center><button class="btn">Color it!</button></center>
+</div>
+
+
+</body>
+</html>

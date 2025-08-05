@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.playground{
+height:400px;
+width:600px;
+border:1px solid black;
+background-color:#beffa8;
+position:relative;
+}
+
+.player{
+height:30px;
+width:30px;
+border:1px solid black;
+background-color:#78c8fc;
+margin-left: 300px;
+position:absolute;
+border-radius: 50%;
+}
+
+.basket{
+height:40px;
+width:70px;
+border:1px solid black;
+background-color: brown;
+position:relative;
+display: flex;
+top:358px;
+left: 0px;
+}
+
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<script>
+$(document).ready(function(){
+	$(".start").click(function(){
+		$(".player").animate({
+			top: '92%',
+		},2000);
+	});
+    
+    $(".reset").click(function(){
+    	var leftOfBasket = parseInt($(".basket").css('left'));
+   		console.log(leftOfBasket);
+        var rightOfBasket = leftOfBasket + 70;
+        
+        var leftOfBall = parseInt($(".player").css('left'));
+        var rightOfBall = leftOfBall + 30;
+		var playerScore = parseInt(document.getElementById("scoreDisplay").innerText);
+        if(leftOfBall >= leftOfBasket && rightOfBall <=rightOfBasket){
+            playerScore +=1;
+            document.getElementById("scoreDisplay").innerText = playerScore;
+            $(".player").css('top','1px');
+        }
+	else{
+        	playerScore -=1;
+            document.getElementById("scoreDisplay").innerText = playerScore;
+        	$(".player").css('top','1px');
+        }
+        
+    });
+    
+});
+
+$(document).on("keydown",function(event){
+	var leftMargin = parseInt($(".basket").css('left'));
+	if(event.key === 'ArrowLeft'){
+        if(leftMargin>-260){
+        	$(".basket").animate({
+        		left: leftMargin-20+"px"
+        	},100);
+        }
+	}
+    else if(event.key === 'ArrowRight'){
+        if(leftMargin<260){
+        	$(".basket").animate({
+        		left: leftMargin+20+"px"
+        	},100);
+        }
+	}
+});	
+
+
+</script>
+</head>
+<body>
+
+<center>
+<div class="playground">
+<div class="player"></div>
+<div class="basket"></div>
+</div>
+
+<br>
+<button class="start">Start!</button>
+<button class="reset">Check Score</button>
+<br>
+<h5>Player Score:</h5><div id="scoreDisplay">0</div>
+</center>
+</body>
+</html>

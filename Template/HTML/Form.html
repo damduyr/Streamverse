@@ -1,0 +1,174 @@
+<html>
+<head>
+<title>Booking Portal</title>
+
+<script>
+function OnSubmit(){
+	alert('Booking Successfull!');
+}
+
+</script>
+
+<style>
+
+.temp{
+background-color: lightgrey;
+width:300px;
+border: 15px solid green;
+padding:50px;
+margin: 20px;
+text-align: justify;
+text-decoration: underline blue double 1px;
+text-transform: capitalize;
+}
+
+body{
+/*
+background-image:url('ss.png');
+background-repeat:repeat-y;
+background-position: center;
+background-size:100% 100%;
+background-attachment: fixed;*/
+
+background: #ffffff url('ss.png') no-repeat center; 
+
+}
+
+#mainForm{
+align: center;
+padding-left: 30%;
+padding-right: 30%;
+}
+
+#fname,#lname{
+margin-left:10%;
+margin-bottom:2%;
+}
+#age{
+margin-left:19%;
+margin-bottom:2%;
+}
+#email{
+margin-left:12%;
+margin-bottom:2%;
+}
+#Phno{
+margin-left:5%;
+margin-bottom:1%;
+}
+
+#movie{
+margin-left:10%;
+margin-bottom:2%;
+}
+
+#tickets{
+margin-left:6%;
+}
+
+#date,#time{
+margin-left:18%;
+margin-bottom:1%;
+}
+
+legend{
+margin-bottom:1%;
+}
+
+input[type="submit"]{
+height: 100px;
+width: 200px;
+margin-left:25%;
+}
+
+</style>
+
+</head>
+<body>
+<div class="mainBody">
+<h2 align=center>Movie Tickets Booking Portal</h2>
+<form id="mainForm">
+<fieldset>
+	<legend>Personal Information:</legend>
+
+	<label for="fname">First Name:</label>
+	<input id="fname" type='text'><br>
+
+	<label for="lname">Last Name:</label>
+	<input id="lname" type='text'><br>
+
+	<label for="age">Age:</label>
+	<input id="age" type='Number'><br>
+
+	<label for="email">Email ID:</label>
+	<input id="email" type='email'><br>
+
+	<label for="Phno">Phone Number:</label>
+	<input id="Phno" type='tel' maxlength="10"><br>
+</fieldset><br>
+
+<fieldset>
+	<legend> Select Movie:</legend>
+	<label for="movie"> Movie List:</label>
+	<select id="movie">
+		<option>Dabaang</option>
+		<option>Chennia Express</option>
+		<option>Chennia Express</option>
+		<option>Sooryavansham</option>
+		<option>Marvel Avengers End Game</option>
+		<option>Return of Chandramukhi</option>
+	</select><br>
+	<label for="tickets">No. of Tickets: </label>
+	<input type="number" id="tickets"><br>
+</fieldset><br>
+
+<fieldset>
+	<legend>Date and Time:</legend>
+	<label for="date">Date: </label>
+	<input id="date" type='date'><br>
+
+	<label for="time">Time: </label>
+	<input id="time" type='time'>	
+</fieldset><br>
+
+<fieldset>
+	<legend>Seat Type: </legend>
+	<input type="radio" id="lwr" name="stype">
+	<label for="lwr">Lower Seat (180rs) </label><br>
+
+	<input type="radio" id="mid" name="stype">
+	<label for="mid">Middle Seat (250rs) </label><br>
+
+	<input type="radio" id="balcony" name="stype">
+	<label for="balcony">Balcony (350rs) </label><br>
+</fieldset><br>
+
+<label>Add On Snacks and Services: </label><br>
+<input type="checkbox" id="popcorn">
+<label for="popcorn">Popcorn </label><br>
+
+<input type="checkbox" id="Cold">
+<label for="Cold">Cold Drink </label><br>
+
+<input type="checkbox" id="glasses">
+<label for="glasses">3D Glasses </label><br><br>
+
+<label for="payment">Mode of Payment: </label>
+<select id="payment">
+		<option>UPI</option>
+		<option>Credit/Debit Card</option>
+		<option>Digital Wallet</option>
+		<option>Cash</option>
+</select><br><br>
+
+<input type="checkbox" id="t&c" required>
+<label for="t&c">Do you agree to our <strong>Terms and conditions</strong>?</label><br><br>
+
+<input type="submit" value="Book" class="submitButton" onclick='document.getElementById("temp").innerHTML=("Hello World!")'>
+
+<div id="temp">The picture above is 350px wide. The total width of this element is also 350px. The total height of this element is 80px.</div>
+
+</form>
+</div>
+</body>
+</html>
