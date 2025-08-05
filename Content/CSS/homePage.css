@@ -1,0 +1,112 @@
+﻿body{
+    background-color:#2A1B3D;
+    text-align: center;
+    color: white;
+}    
+.main-page{
+    display:block;
+}
+.trending-wrapper {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .image-container {
+      display: flex;
+      gap : 30px ;
+      width: 350%;
+      animation: scroll 25s linear infinite;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: 250px;
+      flex-shrink: 0;
+      border-radius: 5px;
+    }
+
+    @keyframes scroll {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-50%);
+      }
+    }
+   .wrapper {
+      width: 100%;
+      overflow: hidden;
+    }
+.movie-grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        padding: 30px;
+        justify-content: space-around;
+        font-size: 12px;
+        row-gap: 30px;
+    }
+    
+.movie-card{
+    background-color: #58496a;
+    padding-top: 12%;
+    padding-bottom: 8%;
+    border-radius: 15px;
+    margin-left: 12%;
+    }
+
+    .movie-card img{
+        height: 200px;
+        width: 150px;
+        border-radius: 5px;
+    }
+    .movie-card p{
+        font-weight: 100;
+    }
+
+    .remove-from-watchlist{
+    background-color: #e50000;
+    width: 30%;
+    border-radius: 15px;
+    margin-left: 35%;
+    margin-top: 8px;
+    }
+
+    .add-review{
+    background-color: #d1981b;
+    width: 35%;
+    height: 18px;
+    border-radius: 15px;
+    margin-left: 33%;
+    color: white;
+    margin-right: 100px;
+    }
+
+    .feedback-form{
+     display:none;
+    background-color: #58496a;
+    margin-left: 37%;
+    margin-right: 35%;
+    padding-top: 20px;
+    width: 350px;
+    padding-left: 35px;
+    padding-bottom: 20px;
+    border-radius: 20px;
+    height: 250px;
+    margin-bottom: 30px;
+    }
+    .rating-value{
+        display: inline-grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin-right:165px;
+    }
+    .rating-value p{
+        margin-top: 4px;
+    font-size: 15px;
+    font-weight: bolder;
+    }
+    .rating-text{
+            display: grid;
+    font-size: 15px;
+    font-weight: bolder;
+    margin-top: 15px;
+    }

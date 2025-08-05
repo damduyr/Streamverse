@@ -1,0 +1,106 @@
+﻿body{
+    background-color: #2A1B38;
+}
+h2{
+    text-align: center;
+    color: white;
+    margin-bottom: 5%;   
+}
+.profile-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    column-gap: 10%;
+    row-gap: 25%;
+    margin-left: 20%;
+    margin-right: 20%;
+    justify-content: space-around;
+
+}
+
+.profile-item{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    width:150%;
+   align-self: center;
+}
+
+
+
+.profile-item remove-profile{
+    color: red;
+    font-size: 15px;
+    font-weight: bold;
+}
+.profile-item .profile-avatar{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 1px solid #af8edd;
+    background-color: #af8edd;
+    color: white;
+    align-content: center;
+    text-align: center;
+    font-size: 25px;
+}
+.profile-item hide{
+    display:none;
+}
+.remove-icon:hover + .hide{
+    display:block;
+    color:white;
+}
+
+.profile-name{
+    user-select:none;
+    color: white;
+    font-weight:bold;
+}
+
+.profile-avatar #show-form-btn{
+    background-color: #D83f87;
+}
+
+#add-profile-form{
+    display: none;
+    color: white;
+    margin-left: 35%;
+    margin-right: 35%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border: 1px solid #d83f87;
+    background: #d83f87;
+    border-radius: 15px;
+    text-align: center;
+    height: 300px;  
+}
+#add-profile-form h3{
+    margin-bottom: 10%;
+    margin-top: 15%;
+}
+
+#add-profile-form label{
+    font-weight:200;
+    font-size: 15px;
+}
+#add-profile-form input{
+    border-radius: 5px;
+    height: 50px;
+    width: 100%;
+    box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    border:none;
+}
+.form-buttons{
+    
+}
+.form-buttons button{
+    height: 50px;
+    width: 100px;
+    border: none;
+    border-radius: 10px;
+    margin-left: 8px;
+    box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.5);
+}

@@ -1,0 +1,32 @@
+﻿.plan-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 3%;
+    row-gap: 60px;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: space-evenly;
+    text-align: center;
+    padding-left: 120px;
+}
+
+.name{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.plan-item{
+    background-color: #7958a3;
+    height: 160px;
+    width: 300px;
+    padding-top: 15px;
+    border-radius: 40px;
+}
+
+#buy-btn{
+    width: 100px;
+    margin-top: 10px;
+    background-color: #d83f87;
+    color: white;
+}

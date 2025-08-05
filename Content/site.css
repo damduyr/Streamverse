@@ -1,0 +1,105 @@
+﻿body {
+    /*padding-bottom: 20px;
+    background-image: url('Images/bg-image.png');
+    filter:blur(10px);
+    background-size: cover;
+    background-repeat: no-repeat;*/
+}
+
+header{
+    padding-top :0;
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+#logo-img{
+    filter:invert(100%);
+    height: 8%;
+    width: 8%;
+    margin: 6px;
+}
+header{
+    background-color:#524487;
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    margin-bottom: 3%;
+}
+.header-title{
+    color: white;
+    align-self: center;
+    font-weight: bold;    
+    font-size: 150%;
+    font-family: Noto Sans, sans-serif;
+}
+
+.login-register{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 10px;
+    padding-right: 20px;
+}
+
+.login-register a{
+    text-decoration:none;
+}
+.header-right-btn{
+    border: 1px solid #d83f87;
+    height: 35px;
+    width: 80px;
+    text-align: center;
+    padding-top: 5px;
+    background-color: #d83f87;
+    border-radius: 12px;
+}
+.logout-btn{
+    border: 1px solid #d83f87;
+    height: 35px;
+    width: 80px;
+    text-align: center;
+    padding-top: 5px;
+    background-color: #d83f87;
+    border-radius: 12px;
+    margin-top: 2%;
+    margin-right: 25px;
+}
+
+.toggle{
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 30px;
+    z-index: 1;
+    left: 97%;
+    cursor: pointer;
+    border-radius: 2px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#menu-bar{
+    height: 60px;
+    width: 60px;
+    margin: 6px;
+    margin-top: 15px;
+    margin-right: 15px;
+}
