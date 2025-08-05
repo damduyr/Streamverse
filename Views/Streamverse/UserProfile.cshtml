@@ -1,0 +1,69 @@
+﻿@model List<Streamverse.Models.UserProfile>
+
+@if (!String.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <script type="text/javascript">alert('Error: '+@Html.Raw(Json.Encode(ViewBag.ErrorMessage)));</script>
+}
+
+@{
+    ViewBag.Title = "Profiles";
+}
+@Styles.Render("~/Content/CSS/userProfile.css")
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="~/Scripts/JS/userProfile.js"></script>
+
+<body>
+    <h2>Who's Watching?</h2>
+
+    <div class="profile-container">
+        @foreach (var profile in Model)
+        {
+            <div class="profile-item" >
+                <a href="@Url.Action("HomePage","Streamverse",new {LoggedInUserID = (int)TempData["UserID"],profileID = profile.ProfileID})" style="text-decoration:none;">
+                    <div class="profile-avatar">@(profile.ProfileName?.FirstOrDefault())</div>
+                    <div class="profile-name">@profile.ProfileName</div>
+                    @if (profile.IsKidProfile)
+                {
+                        <div class="kid-profile">Kid Profile</div>
+                    }
+                </a>
+                <div class="remove-icon">
+                    <a class="remove-profile" 
+                       href="@Url.Action("RemoveProfile","Streamverse",new {profileIdToDelete = profile.ProfileID})" 
+                       style="color:red;font-size:15px;font-weight: bold;">X
+                    </a>
+                </div>
+                <div class="hide">Remove @profile.ProfileName</div>
+            </div>
+        }
+        <div class="profile-item">
+            <button class ="profile-avatar" id="show-form-btn" onclick="showForm()">+</button>
+             <div class="profile-name">Add Profile</div>
+        </div>
+
+    </div>
+
+    <div id="add-profile-form">
+        <h3>Create a New Profile</h3>
+        @using (Html.BeginForm())
+        {
+            @Html.Hidden("UserID", (int)TempData["UserID"])
+
+            <div class="form-group">
+                @*<label for="ProfileName">Profile Name</label>*@
+                <input type="text" id="ProfileName" name="ProfileName" placeholder="Profile Name" required />
+            </div>
+
+            <div class="form-group">
+                @*<label for="Age">Age</label>*@
+                <input type="number" id="Age" name="Age" placeholder="Age" required min="12" />
+            </div>
+            <div class="form-buttons">
+                <button type="button" id="cancel-btn" onclick="showProfiles()">Cancel</button>
+                <button type="submit" id="submit-btn" onclick="saveProfile()">Save Profile</button>
+            </div>
+        }
+    </div>
+</body>
+

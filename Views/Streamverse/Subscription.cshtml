@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Streamverse.Models.SubscriptionPlan>
+@Styles.Render("~/Content/CSS/subscriptionPlanList.css")
+@if (!String.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <script type="text/javascript">alert('Error: '+@Html.Raw(Json.Encode(ViewBag.ErrorMessage)));</script>
+}
+@{
+    ViewBag.Title = "Subscription Plans";
+}
+@*http://localhost:56794/Streamverse/Subscription?LoggedInUserID=3*@
+
+<div class="plan-list">
+    @foreach (var plan in Model)
+    {
+        <div class="plan-item">
+            <div class="name">@Html.DisplayFor(modelItem => plan.PlanName)</div>
+            <div class="duration">@Html.DisplayFor(modelItem => plan.PlanDuration) Month</div>
+            <div class="max-screen">Max Screens: @Html.DisplayFor(modelItem => plan.MaxScreens)</div>
+            <div class="price">@Html.DisplayFor(modelItem => plan.Price)</div>
+
+            @using (Html.BeginForm("Subscription", "Streamverse", FormMethod.Post))
+                {
+                @Html.Hidden("PlanID", plan.PlanID)
+                @Html.Hidden("AdminID", plan.AdminID)
+                @Html.Hidden("PlanName", plan.PlanName)
+                @Html.Hidden("PlanDuration", plan.PlanDuration)
+                @Html.Hidden("Price", plan.Price)
+                @Html.Hidden("MaxScreens", plan.MaxScreens)
+                <input type="submit" value="Buy Now!" id="buy-btn" />
+            }
+        </div>
+    }
+</div>

@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streamverse.tv - @ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <header>
+        <img src="~/Content/Images/Logo1.png" id="logo-img"/>
+        <div class="header-title">@ViewBag.Title</div>
+        @*<div class="toggle">
+            <span class="top_line common"></span>
+            <span class="middle_line common"></span>
+            <span class="bottom_line common"></span>
+        </div>*@
+        @*<img src="~/content/images/menu_icon.png" id="menu-bar" />*@
+        @if (Session["UserSession"] == null)
+        {
+            <div class="login-register">
+                <div class="header-right-btn"><a href="@Url.Action("LoginPage","Streamverse")">SignIn</a></div>
+                <div class="header-right-btn"><a href="@Url.Action("RegisterPage","Streamverse")">SignUp</a></div>                
+            </div>
+        }
+        else
+        {
+            <div class="logout-btn"><a href="@Url.Action("LogOut","Streamverse")">SignOut</a></div>
+        }
+        
+    </header>
+    @RenderBody()
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

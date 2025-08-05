@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Streamverse.Models.User>
+@if (!String.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <script type="text/javascript">alert('Error: '+@Html.Raw(Json.Encode(ViewBag.ErrorMessage)));</script>
+}
+@{
+    ViewBag.Title = "Welcome System Admin, " + TempData["adminName"];
+}
+
+<h2 style="text-align: center;">Streamverse Users List</h2>
+
+<table class="table" style="text-align:center; vertical-align:central;">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Last_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone_Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DOB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegionName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.First_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Last_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone_Number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DOB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegionName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+    </tr>
+}
+
+</table>
+<div style="margin-left:30px;">@Html.ActionLink("Show System Admin Page", "SystemAdminPage",new { adminID = (int)TempData["LoggedInAdminID"] })</div>

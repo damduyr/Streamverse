@@ -1,0 +1,44 @@
+﻿@model Streamverse.Models.UserLogin
+@if (!String.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <script type="text/javascript">alert('Error: '+@Html.Raw(Json.Encode(ViewBag.ErrorMessage)));</script>
+}
+@{
+    ViewBag.Title = "Welcome";
+}
+@Styles.Render("~/Content/CSS/loginPage.css")
+<link rel="stylesheet" href="~/Content/CSS/loginPage.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+@if (!String.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <script type="text/javascript">alert('Error: '+@Html.Raw(Json.Encode(ViewBag.ErrorMessage)));</script>
+}
+
+@using (Html.BeginForm()) 
+{
+    <body>  
+            <div class="login-container">
+                <h3>Sign In</h3>
+                <div class="login-item">
+                   
+                    @Html.TextBoxFor(model => model.Email, new {@class= "input-field" ,@placeholder = "Email ID"})
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger", style = "color:white;" })
+                </div>
+                <div class="login-item">
+                    
+                    @Html.PasswordFor(model => model.Password, new { @class = "input-field", @placeholder = "Password" })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger", style = "color:white;" })
+                </div>
+                <div class="submit-btn-container">
+                    <input type="submit" value="Submit" id="submit-btn" style="margin-top:2%;background-color:white;border-radius:10px;height:40px;width:70px;color:black;"/>
+                </div>    
+                <div class="register-btn">
+                    @Html.ActionLink("New User? Sign Up.", "RegisterPage", new { @class= "register-btn" })
+                   
+                </div>  
+            </div> 
+    </body>
+}
+
+

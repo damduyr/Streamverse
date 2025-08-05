@@ -1,0 +1,204 @@
+﻿@model Streamverse.Models.HomePageViewModel
+@{
+    ViewBag.Title = "Welcome, "+ TempData["profileName"];
+}
+@Styles.Render("~/Content/CSS/homePage.css")
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+@*@Scripts.Render("~/Content/Scripts/homePage.js")*@
+@if (!String.IsNullOrEmpty((string)TempData["WatchlistNotification"]))
+{
+    <script type="text/javascript">alert(@Html.Raw(Json.Encode((string)TempData["WatchlistNotification"])));</script>
+}
+
+<body>
+    <div class="main-page" style="display:block;">
+        <h2>Trending among @Session["PlanName"] Users🔥</h2>
+        <hr />
+        <div class="trending-wrapper">
+            <div class="wrapper">
+                <div class="image-container">
+
+                    @for (int pass = 0; pass < 3; pass++)
+                    {
+                        for (int i = 0; i < Model.Top5TrendingMovies.Count(); i++)
+                        {
+                            var movie = Model.Top5TrendingMovies.ElementAt(i);
+                            <div class="slide-item">
+                                <a href="@Url.Content(@movie.VideoUrl)">
+                                    <img class="slider-img" src="@Url.Content(@movie.TrailerURL)" alt="@movie.Title Poster" style="width:100%;" />
+                                </a>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+
+        <hr />
+        @if (Model.TopRegionalMovies != null)
+        {
+            <h2>Movies Popular in @TempData["userRegion"]</h2>
+            <div class="movie-grid">
+                @foreach (var movie in Model.TopRegionalMovies)
+                {
+                    <div class="movie-card">
+                        <a href="@Url.Content(@movie.VideoUrl)"><img src="@Url.Content(@movie.PosterURL)" alt="@movie.Title Poster" /></a>
+                        <h3>@movie.Title</h3>
+                        <p>@movie.GenreName</p>
+                        <p>@movie.OverallRating/5</p>
+                        <a href="@Url.Action("AddToWatchlist","Streamverse",new {profileID =(int)TempData["ProfileID"], contentID = movie.MovieID})" style="color:#04f3ff;">Add to Watchlist</a>
+                    </div>
+                }
+            </div>
+        }
+        
+
+        <h2>All Movies</h2>
+        <div class="movie-grid">
+            @foreach (var movie in Model.FilteredMovies)
+            {
+                <div class="movie-card">
+                    <a href="@Url.Content(@movie.VideoUrl)"><img src="@Url.Content(@movie.PosterURL)" alt="@movie.Title Poster" /></a>
+                    <h3>@movie.Title</h3>
+                    <p>@movie.GenreName</p>
+                    <p>@movie.OverallRating/5</p>
+                    <a href="@Url.Action("AddToWatchlist","Streamverse",new {profileID =(int)TempData["ProfileID"], contentID = movie.MovieID})" style="color:#04f3ff;">Add to Watchlist</a>
+                </div>
+            }
+        </div>
+        @if (Model.Top5WatchlistMovies != null || !Model.Top5WatchlistMovies.Any())
+        {
+            <h2>Top 5 in Your Watchlist</h2>
+            <div class="movie-grid">
+                @foreach (var movie in Model.Top5WatchlistMovies)
+                {
+                    <div class="movie-card">
+                        <a href="@Url.Content(@movie.VideoUrl)"><img src="@Url.Content(@movie.PosterURL)" alt="@movie.Title Poster" /></a>
+                        <h3>@movie.Title</h3>
+                        <p>@movie.GenreName</p>
+                        <p>@movie.OverallRating/5</p>
+                    </div>
+                }
+            </div>
+            <button class="show_watchlist" 
+                    onclick="showWatchlist()" 
+                    style="width: 200px;margin-bottom: 40px;background-color: #D83F87;color: white;box-shadow: white;">
+        Show full watchlist</button>
+        }
+    </div>
+
+    @*Only WatchlistPage*@
+    <div class="watchlist-page" style="display:none;">
+        <h2>Your Watchlist🔥</h2>
+        <div class="movie-grid">
+            @foreach (var movie in Model.SortedWatchlistMovies)
+            {
+                <div class="movie-card">
+                    <a href="@Url.Content(@movie.VideoUrl)"><img src="@Url.Content(@movie.PosterURL)" alt="@movie.Title Poster" /></a>
+                    <h3>@movie.Title</h3>
+                    <p>@movie.GenreName</p>
+                    @*<div class="add-review"><a href="showReviewForm(movieID = @movie.MovieID)">Add Review</a></div>*@
+                    <button type="button" class="add-review" onclick="showReviewForm(movieID = @movie.MovieID)">Add Review</button>
+                    <div class="remove-from-watchlist"><a href="@Url.Action("RemoveFromWatchlist","Streamverse",new {profileID =(int)TempData["ProfileID"], contentID = movie.MovieID})">Remove</a></div>
+                </div>
+            }
+        </div>
+        <button class="homepage-btn" 
+                onclick="backToHomepage()" 
+                style="width: 200px;margin-bottom: 40px;background-color: #D83F87;color: white;box-shadow: white;">
+        Return</button>
+    </div>
+    @*Review Form Page*@        
+    <form class="feedback-form">
+            <div class="rating-value">
+                <p>Rating:</p><input type="number" id="ratingValue" required min="1" max="5" style="width: 50px;margin-left: 7px;" /> <p>/ 5</p>
+            </div>
+            <div class="rating-text">
+                <p style="margin-right: 100%">Review:</p>
+                <input type="text" id="text-field-review"
+                       style="height: 90px;margin-bottom: 15px;" />
+            </div>
+            <input type="submit" onclick="submitReview()" id="ratingText"
+                   style="background-color: #d83f87;width: 80px;color: white;font-size: 15px;font-weight: bold;margin-right: 30px;" />
+        </form>
+
+</body>
+
+<script>
+    let movieIDTemp = 0;
+    function showWatchlist() {
+        const div1 = document.querySelector('.main-page');
+        const div2 = document.querySelector(".watchlist-page");
+        div1.style.display = "none";
+        div2.style.display = "block";
+    }
+
+    function backToHomepage() {
+        const div1 = document.querySelector('.main-page');
+        const div2 = document.querySelector(".watchlist-page");
+        div1.style.display = "block";
+        div2.style.display = "none";
+    }
+    
+    function showReviewForm(movieID) {
+        movieIDTemp = movieID;
+        const div1 = document.querySelector('.watchlist-page');
+        const div2 = document.querySelector(".feedback-form");
+        div1.style.display = "none";
+        div2.style.display = "block";
+    }
+
+    $(document).ready(function(){
+        $(".feedback-form").on('submit',function(event){
+            event.preventDefault();
+            //submitReview();
+        })
+    })
+
+    function submitReview() {
+        var ratingValue = $("#ratingValue").val();
+        var ratingText = $("#text-field-review").val();    
+        if(!ratingValue){
+            alert('Please provide a rating.');
+            return;
+        }
+
+        if(ratingValue % 1 != 0){
+            alert("Rating must be a whole number e.g., 1,2,3,4,5");
+            return;
+        }
+        if(isNaN(ratingValue) || ratingValue<1 || ratingValue>5){
+            alert("Rating value must be a number between 1 and 5");
+            return;
+        }
+        const div1 = document.querySelector('.watchlist-page');
+        const div2 = document.querySelector(".feedback-form");
+        div2.style.display = "none";
+        div1.style.display = "block";
+        //console.log("inside func");
+
+
+        var profileID =@TempData["profileID"];
+        $.ajax({
+            type: 'POST',
+            url: '/Streamverse/SaveReview',
+            data: { profileID, movieIDTemp, ratingValue,ratingText},
+            success: function (response) {
+                if (response.success == false) {
+                    alert(response.message);
+                }
+                alert('Thank you! Review added Successfully');
+
+            },
+            error: function (error) {
+                //console.log("inside error");
+                //console.log(profileID);
+                //console.log(movieIDTemp);
+                //console.log(ratingValue);
+                //console.log(ratingText);
+                
+                alert('Error: ' + error);
+            }
+        })
+    }
+</script>

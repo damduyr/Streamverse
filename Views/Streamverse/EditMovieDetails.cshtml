@@ -1,0 +1,125 @@
+﻿@model Streamverse.Models.FullMovieDetails
+@if (!String.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <script type="text/javascript">alert('Error: '+@Html.Raw(Json.Encode(ViewBag.ErrorMessage)));</script>
+}
+@{
+    ViewBag.Title = "";
+}
+
+<h2>Edit Movie Details</h2>
+
+@using (Html.BeginForm())
+{
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.MovieID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger", style = "color:white;" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger", style = "color:white;" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ReleaseDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ReleaseDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ReleaseDate, "", new { @class = "text-danger", style = "color:white;" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContentType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+               @Html.DropDownListFor(model => model.ContentType,
+        new SelectList(new List<SelectListItem>
+         {
+            new SelectListItem {Text = "Platinum", Value = "Platinum"},
+            new SelectListItem {Text = "Gold", Value = "Gold"},
+            new SelectListItem {Text = "Silver", Value = "Silver"}
+         }, "Value", "Text"), "---------Select Content Type---------", new { @id = "contentType", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ContentType, "", new { @class = "text-danger", style = "color:white;" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GenreName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.GenreName,
+        new SelectList(new List<SelectListItem>
+         {
+            new SelectListItem {Text = "Action", Value = "Action"},
+            new SelectListItem {Text = "Comedy", Value = "Comedy"},
+            new SelectListItem {Text = "Drama", Value = "Drama"},
+            new SelectListItem {Text = "Thriller", Value = "Thriller"},
+            new SelectListItem {Text = "Fantasy", Value = "Fantasy"},
+            new SelectListItem {Text = "Crime", Value = "Crime"}
+         }, "Value", "Text"), "---------Select Genre---------", new { @id = "genre", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.GenreName, "", new { @class = "text-danger", style = "color:white;" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DurationInMinutes, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DurationInMinutes, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DurationInMinutes, "", new { @class = "text-danger", style = "color:white;" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TrailerURL, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TrailerURL, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TrailerURL, "", new { @class = "text-danger", style = "color:white;" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PosterURL, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PosterURL, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PosterURL, "", new { @class = "text-danger", style = "color:white;" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VideoUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.VideoUrl, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.VideoUrl, "", new { @class = "text-danger", style = "color:white;" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OverallRating, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OverallRating, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.OverallRating, "", new { @class = "text-danger", style = "color:white;" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "ContentManagerPage", new { contentManagerID = (int)TempData["contentManagerID"] })
+</div>

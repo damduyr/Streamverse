@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Streamverse.Models.MoviePopularityViewModel>
+@if (!String.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <script type="text/javascript">alert('Error: '+@Html.Raw(Json.Encode(ViewBag.ErrorMessage)));</script>
+}
+@{
+    ViewBag.Title = "Welcome, " + TempData["adminName"];
+}
+
+
+<h2 style="text-align:center;"> Movie Popularity</h2>
+<p class="lead" style="text-align:center;"> Movie ranked by the number of times they have been added to a user's watchlist.</p>
+<div class="table-responsive mt-4">
+    <table class="table table-bordered table-striped table-hover" style="background-color: #ffcaca;color: black;">
+        <thead class="thead-dark">
+            <tr>
+                <th style="width:10%;">Rank</th>
+                <th>Movie Title</th>
+                <th style="width:25%;">Popularity Score (Watchlist Adds)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{ int rank = 1;}
+            @foreach (var movie in Model)
+            {
+                <tr>
+                    <td class="text-center font-weight-bold">@(rank++)</td>
+                    <td>@movie.MovieTitle</td>
+                    <td class="text-center">@movie.WatchlistCount</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
